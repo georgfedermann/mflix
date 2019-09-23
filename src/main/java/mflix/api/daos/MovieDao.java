@@ -179,8 +179,8 @@ public class MovieDao extends AbstractMFlixDao {
         // filter and sort
         List<Document> movies = new ArrayList<>();
         moviesCollection
-                .find(castFilter)
-                .sort(sort)
+                .find(Filters.in("cast", cast))
+                .sort(Sorts.descending(sortKey))
                 .limit(limit)
                 .skip(skip)
                 .iterator()
